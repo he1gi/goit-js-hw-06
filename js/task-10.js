@@ -6,13 +6,14 @@ const refs = {
 };
 
 let incrementForDimensions = 0;
+let numeration = 1;
 
 /*
 Events
 */
+
 refs.create.addEventListener("click", () => {
   const inputValue = refs.input.value;
-
   createBoxes(inputValue);
 });
 
@@ -34,10 +35,14 @@ function createBoxes(amount) {
   for (let i = 1; i <= amount; i += 1) {
     incrementForDimensions += 10;
 
-    markUp += `<div style="width: ${20 + incrementForDimensions}px; height:${
+    markUp += `<div style="display: flex; justify-content: center; align-items: center; width: ${
       20 + incrementForDimensions
-    }px; background-color: ${getRandomHexColor()};"></div>`;
+    }px; height:${
+      20 + incrementForDimensions
+    }px; background-color: ${getRandomHexColor()};"><span style="display:inline-block; font-size: ${incrementForDimensions}px; color: ${getRandomHexColor()}">${numeration}</span></div>`;
+    numeration += 1;
   }
+
   refs.box.insertAdjacentHTML("beforeend", markUp);
 }
 
@@ -47,4 +52,5 @@ function destroyBoxes() {
   input.value = "";
   box.innerHTML = "";
   incrementForDimensions = 0;
+  numeration = 1;
 }
