@@ -9,14 +9,17 @@ const ingredients = [
 
 const listEl = document.querySelector("#ingredients");
 
-const createIngrediantsOptions = (options) => {
-  return options.map((ingredient) => {
+const createIngrediantsMarkUp = (list) => {
+  return list.map((ingredient) => {
     const ingredientEl = document.createElement("li");
+
     ingredientEl.textContent = ingredient;
     ingredientEl.classList.add("item");
+
     return ingredientEl;
   });
 };
 
-const itemsEl = createIngrediantsOptions(ingredients);
+const itemsEl = createIngrediantsMarkUp(ingredients);
+
 listEl.append(...itemsEl);
